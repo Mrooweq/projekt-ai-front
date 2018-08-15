@@ -1,0 +1,21 @@
+.header {
+    text-align: right;
+    background-color: #222;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.header-title {
+    text-align: center;
+    padding: 5px;
+}
+
+.menu {
+    background-color: #f06;
+    color: white;
+}
+
+.display {
+    background-color: #60f;
+    color: white;
+}
