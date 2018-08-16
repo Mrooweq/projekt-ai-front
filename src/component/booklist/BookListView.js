@@ -20,18 +20,10 @@ class BookListView extends Component {
         this.getList();
     }
 
-    read(response) {
-        let resp = response.data;
-        this.setState({response: resp});
-        //
-        // alert(JSON.stringify(this.state.response));
-        // alert(JSON.stringify(resp));
-    }
-
     getList() {
         axios.get(this.url, this.headers)
             .then((response) => {
-                this.read(response)
+                this.setState({response: response.data})
             })
             .catch((error) => {alert('error: ' + error)})
     }
@@ -44,10 +36,7 @@ class BookListView extends Component {
             <div className="display">
                 {
                     response.map(i => {
-                        return <BookListPosition
-                            key={j}
-                            elem={i}
-                            index={j++}/>
+                        return <BookListPosition key={j} elem={i} index={j++}/>
                     })
                 }
             </div>
