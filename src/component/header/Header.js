@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
-import ApiService from "../service/ApiService";
 
 class Header extends Component {
 
     constructor(){
         super();
         this.state = {
-            inputValue: ''
+            searchValue: ''
         };
-
-        this.apiService = new ApiService();
     }
 
     updateSearchInput = (evt) => {
         this.setState({
-            inputValue: evt.target.value
+            searchValue: evt.target.value
         });
     };
 
@@ -32,14 +29,14 @@ class Header extends Component {
                         type="text"
                         id="searchInput"
                         placeholder="Find a book"
-                        value={this.state.inputValue}
+                        value={this.state.searchValue}
                         onChange={evt => this.updateSearchInput(evt)}
                     />
                 </label>
                 <input type="submit"
                        value="Search"
                        onClick={() => {
-                           this.apiService.searchBook();
+                           // this.searchBook(this.state.searchValue);
                        }}/>
             </div>
 

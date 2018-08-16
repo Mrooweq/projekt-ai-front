@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-
+import CustomLink from "./CustomLink";
 
 class Menu extends Component {
 
     render() {
         const menuPosition = [
-            {name: 'Buy a book', url: 'url'},
-            {name: 'Usuń konto', url: 'delete'}
+            {name: 'List of books', url: '/list'},
+            {name: 'Test', url: '/test'}
         ];
 
         return (
@@ -14,9 +14,10 @@ class Menu extends Component {
                 {
                     menuPosition.map(i => {
                         return (
-                            <div>
-                                <a href={i.url}>{i.name}</a>
-                            </div>
+                            <CustomLink
+                                key={i.url}
+                                url={i.url}
+                                name={i.name}/>
                         )
                     })
                 }
