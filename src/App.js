@@ -8,7 +8,7 @@ import { Column, Row } from 'simple-flexbox';
 class App extends Component {
     render() {
         return (
-                <div>
+                <div id="app">
                     <Header/>
 
                     <Column flexGrow={1}>

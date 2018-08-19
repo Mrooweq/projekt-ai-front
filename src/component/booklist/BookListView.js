@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import BookListPosition from "./BookListPosition";
+import DefaultHeaders from "../../constants/Constants";
 
 class BookListView extends Component {
 
@@ -10,18 +11,13 @@ class BookListView extends Component {
             response: []
         };
 
-        this.getList = this.getList.bind(this);
         this.url = 'http://localhost:8080/api/book/getBooks';
-        this.headers = {
-            'headers':
-                {'Authorization': 'xDD'}
-        };
-
+        this.getList = this.getList.bind(this);
         this.getList();
     }
 
     getList() {
-        axios.get(this.url, this.headers)
+        axios.get(this.url, DefaultHeaders)
             .then((response) => {
                 this.setState({response: response.data})
             })

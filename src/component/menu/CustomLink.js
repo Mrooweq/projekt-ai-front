@@ -4,8 +4,8 @@ class CustomLink extends Component {
 
     render() {
         return (
-            <div>
-                <a href={this.props.url}>{this.props.name}</a>
+            <div className="custom-link-wrapper">
+                <a href={this.props.url} className="custom-link">{this.props.name}</a>
             </div>
         );
     }

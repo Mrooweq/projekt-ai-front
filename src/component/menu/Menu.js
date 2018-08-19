@@ -14,10 +14,7 @@ class Menu extends Component {
                 {
                     menuPosition.map(i => {
                         return (
-                            <CustomLink
-                                key={i.url}
-                                url={i.url}
-                                name={i.name}/>
+                            <CustomLink key={i.url} url={i.url} name={i.name}/>
                         )
                     })
                 }

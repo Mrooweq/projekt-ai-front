@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import placeholder from '../../image/image.jpg';
+import detailsIcon from '../../image/details_icon.png';
+import placeholder from '../../image/placeholder.jpg';
 import axios from "axios";
+import DefaultHeaders from "../../constants/Constants";
 
 class BookListPosition extends Component {
 
@@ -10,16 +12,13 @@ class BookListPosition extends Component {
             response: []
         };
 
-        this.getDetails = this.getDetails.bind(this);
         this.url = 'http://localhost:8080/api/book/getBook/';
-        this.headers = {
-            'headers':
-                {'Authorization': 'xDD'}
-        };
+        this.getDetails = this.getDetails.bind(this);
     }
 
     getDetails(id) {
-        axios.get(this.url + id, this.headers)
+        alert('xPPP');
+        axios.get(this.url + id, DefaultHeaders)
             .then((response) => {
                 this.setState({response: response.data})
             })
@@ -32,19 +31,27 @@ class BookListPosition extends Component {
 
     entry = () => {
         return (
-            <div onClick={() => this.getDetails(this.props.elem.id)}>
-                <img src={placeholder} align="left" alt="" className="image" />
+            <div>
+                <div className="book-list-pos-section1">
+                    <img src={placeholder} align="left" alt="" className="placeholder"
+                         onClick={() => this.getDetails(this.props.elem.id)}/>
 
-                <div>
                     <div>
-                        Title: <b>{this.props.elem.title}</b>
+                        <div>
+                            Title: <b>{this.props.elem.title}</b>
+                        </div>
+                        <div>
+                            Autor: {this.props.elem.author}
+                        </div>
+                        <div>
+                            Price: {this.props.elem.price} PLN
+                        </div>
                     </div>
-                    <div>
-                        Autor: {this.props.elem.author}
-                    </div>
-                    <div>
-                        Price: {this.props.elem.price} PLN
-                    </div>
+                </div>
+
+                <div className="book-list-pos-section2">
+                    <img src={detailsIcon}  alt="" className="img"
+                         onClick={() => this.getDetails(this.props.elem.id)}/>
                 </div>
             </div>
         )
