@@ -17,7 +17,6 @@ class BookListPosition extends Component {
     }
 
     getDetails(id) {
-        alert('xPPP');
         axios.get(this.url + id, DefaultHeaders)
             .then((response) => {
                 this.setState({response: response.data})

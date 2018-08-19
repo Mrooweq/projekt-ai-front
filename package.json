@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.4.2",
+    "react-background-image-loader": "0.0.5",
     "react-dom": "^16.4.2",
     "react-native": "^0.56.0",
     "react-router-dom": "^4.3.1",
