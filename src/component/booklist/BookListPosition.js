@@ -4,6 +4,7 @@ import placeholder from '../../image/placeholder.jpg';
 import axios from "axios";
 import DefaultHeaders from "../../constants/Constants";
 
+
 class BookListPosition extends Component {
 
     constructor(){
@@ -19,7 +20,7 @@ class BookListPosition extends Component {
     getDetails(id) {
         axios.get(this.url + id, DefaultHeaders)
             .then((response) => {
-                this.setState({response: response.data})
+                this.props.clb(response.data);
             })
             .catch((error) => {alert('error: ' + error)})
     }
@@ -66,3 +67,4 @@ class BookListPosition extends Component {
 }
 
 export default BookListPosition;
+

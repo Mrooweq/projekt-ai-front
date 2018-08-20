@@ -6,7 +6,7 @@ class CustomLink extends Component {
     render() {
         return (
             <div className="custom-link-wrapper">
-                <Link to={this.props.url}>{this.props.name}</Link>
+                <Link to={this.props.url} className="custom-link">{this.props.name}</Link>
             </div>
         );
     }

@@ -1,16 +1,37 @@
 import React, {Component} from 'react';
 import {Route} from "react-router-dom";
 import BookListView from "../booklist/BookListView";
+import BookPosDetails from "../booklist/BookPosDetails";
 
 class Display extends Component {
 
-    bookListView() {
-        return (
-            <BookListView/>
-        );
+    constructor(){
+        super();
+        this.state = {
+            id: null
+        };
     }
 
     render() {
+
+        const showDetails = (response) => {
+            this.setState({response: response});
+        };
+
+        const showDisplay = () => {
+
+            if(this.state.response !== undefined){
+                return (
+                    <BookPosDetails data={this.state.response}/>
+                );
+            }
+            else {
+                return (
+                    <BookListView clb={showDetails}/>
+                );
+            }
+        };
+
         return (
             <div className="display">
                 <Route exact path="/" component={() => {
@@ -18,7 +39,7 @@ class Display extends Component {
                         <div />
                     );
                 }}/>
-                <Route path="/list" component={this.bookListView}/>
+                <Route path="/list" component={showDisplay}/>
             </div>
         );
     }

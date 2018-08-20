@@ -32,7 +32,10 @@ class BookListView extends Component {
             <div className="display">
                 {
                     response.map(i => {
-                        return <BookListPosition key={j} elem={i} index={j++}/>
+                        return <BookListPosition key={j}
+                                                 elem={i}
+                                                 index={j++}
+                                                 clb={this.props.clb}/>
                     })
                 }
             </div>
