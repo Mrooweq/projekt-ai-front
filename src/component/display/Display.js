@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {Route} from "react-router-dom";
 import BookListView from "../booklist/BookListView";
 
 class Display extends Component {
@@ -12,16 +12,14 @@ class Display extends Component {
 
     render() {
         return (
-            <Router>
-                <div className="display">
-                    <Route exact path="/" component={() => {
-                        return (
-                            <div />
-                        );
-                    }}/>
-                    <Route path="/list" component={this.bookListView}/>
-                </div>
-            </Router>
+            <div className="display">
+                <Route exact path="/" component={() => {
+                    return (
+                        <div />
+                    );
+                }}/>
+                <Route path="/list" component={this.bookListView}/>
+            </div>
         );
     }
 }
