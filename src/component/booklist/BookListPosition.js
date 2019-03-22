@@ -1,24 +1,34 @@
-import React, {Component} from 'react';
+import React from 'react';
 import detailsIcon from '../../image/details_icon.png';
 import placeholder from '../../image/placeholder.jpg';
 import axios from "axios";
-import DefaultHeaders from "../../constants/Constants";
+import Constants from "../../constants/Constants";
+import CommonComponent from "../../common/CommonComponent";
+import Mocks from "../../constants/Mocks";
 
 
-class BookListPosition extends Component {
+class BookListPosition extends CommonComponent {
 
     constructor(){
         super();
+
         this.state = {
+            ...this.state,
             response: []
         };
 
         this.url = 'http://localhost:8080/api/book/getBook/';
+
+        if(Constants.ifMock){
+            this.setMock(this.url + '1', Mocks.book1);
+            this.setMock(this.url + '2', Mocks.book2);
+        }
+
         this.getDetails = this.getDetails.bind(this);
     }
 
     getDetails(id) {
-        axios.get(this.url + id, DefaultHeaders)
+        axios.get(this.url + id, Constants.headers)
             .then((response) => {
                 this.props.clb(response.data);
             })

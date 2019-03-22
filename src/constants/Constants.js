@@ -1,6 +1,6 @@
-const DefaultHeaders = {
-    'headers':
-        {'Authorization': 'xDD'}
+const Constants = {
+    'headers': {'Authorization': 'xDD'},
+    'ifMock': true
 };
 
-export default DefaultHeaders;
+export default Constants;

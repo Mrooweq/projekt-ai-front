@@ -1,23 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from "axios";
 import BookListPosition from "./BookListPosition";
-import DefaultHeaders from "../../constants/Constants";
+import Constants from "../../constants/Constants";
+import Mocks from "../../constants/Mocks";
+import CommonComponent from "../../common/CommonComponent";
 
-class BookListView extends Component {
+class BookListView extends CommonComponent {
 
     constructor(){
         super();
+
         this.state = {
+            ...this.state,
             response: []
         };
 
         this.url = 'http://localhost:8080/api/book/getBooks';
+
+        if(Constants.ifMock){
+            this.setMock(this.url, Mocks.books);
+        }
+
         this.getList = this.getList.bind(this);
         this.getList();
     }
 
     getList() {
-        axios.get(this.url, DefaultHeaders)
+        axios.get(this.url, Constants.headers)
             .then((response) => {
                 this.setState({response: response.data})
             })
