@@ -3,7 +3,7 @@ import axios from "axios";
 import BookListPosition from "./BookListPosition";
 import Constants from "../../constants/Constants";
 import Mocks from "../../constants/Mocks";
-import CommonComponent from "../../common/CommonComponent";
+import CommonComponent from "../CommonComponent";
 
 class BookListView extends CommonComponent {
 
@@ -15,7 +15,7 @@ class BookListView extends CommonComponent {
             response: []
         };
 
-        this.url = 'http://localhost:8080/api/book/getBooks';
+        this.url = Constants.BASE_API + '/book/getBooks';
 
         if(Constants.ifMock){
             this.setMock(this.url, Mocks.books);
@@ -30,7 +30,7 @@ class BookListView extends CommonComponent {
             .then((response) => {
                 this.setState({response: response.data})
             })
-            .catch((error) => {alert('error: ' + error)})
+            .catch((e) => {this.handleError(e)})
     }
 
     render() {

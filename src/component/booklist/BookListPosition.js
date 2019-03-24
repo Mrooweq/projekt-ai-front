@@ -3,7 +3,7 @@ import detailsIcon from '../../image/details_icon.png';
 import placeholder from '../../image/placeholder.jpg';
 import axios from "axios";
 import Constants from "../../constants/Constants";
-import CommonComponent from "../../common/CommonComponent";
+import CommonComponent from "../CommonComponent";
 import Mocks from "../../constants/Mocks";
 
 
@@ -17,7 +17,7 @@ class BookListPosition extends CommonComponent {
             response: []
         };
 
-        this.url = 'http://localhost:8080/api/book/getBook/';
+        this.url = Constants.BASE_API + '/book/getBook/';
 
         if(Constants.ifMock){
             this.setMock(this.url + '1', Mocks.book1);
@@ -32,7 +32,7 @@ class BookListPosition extends CommonComponent {
             .then((response) => {
                 this.props.clb(response.data);
             })
-            .catch((error) => {alert('error: ' + error)})
+            .catch((e) => {this.handleError(e)})
     }
 
     determineStyle = () => {

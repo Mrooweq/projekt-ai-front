@@ -17,6 +17,10 @@ class CommonComponent extends Component {
             .onGet(url)
             .reply(200, data);
     }
+
+    handleError = (e) => {
+        alert('errorCaught: ' + JSON.stringify(e));
+    }
 }
 
 export default CommonComponent;

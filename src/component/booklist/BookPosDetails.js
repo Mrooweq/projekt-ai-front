@@ -1,6 +1,6 @@
 import React from 'react';
 import placeholder from "../../image/placeholder.jpg";
-import CommonComponent from "../../common/CommonComponent";
+import CommonComponent from "../CommonComponent";
 
 
 class BookPosDetails extends CommonComponent {
