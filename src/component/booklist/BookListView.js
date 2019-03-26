@@ -12,7 +12,7 @@ class BookListView extends CommonComponent {
 
         this.state = {
             ...this.state,
-            response: []
+            data: []
         };
 
         this.url = Constants.BASE_API + '/book/getBooks';
@@ -28,23 +28,25 @@ class BookListView extends CommonComponent {
     getList() {
         axios.get(this.url, Constants.headers)
             .then((response) => {
-                this.setState({response: response.data})
-            })
-            .catch((e) => {this.handleError(e)})
+                this.setState({
+                    ...this.state,
+                    data: response.data
+                })
+            }).catch((e) => {this.handleError(e)})
     }
 
     render() {
-        let response = this.state.response;
+        let data = this.state.data;
         let j = 0;
 
         return (
             <div className="display">
                 {
-                    response.map(i => {
+                    data.map(i => {
                         return <BookListPosition key={j}
                                                  elem={i}
                                                  index={j++}
-                                                 clb={this.props.clb}/>
+                                                 onShowDetails={this.props.onShowDetails}/>
                     })
                 }
             </div>

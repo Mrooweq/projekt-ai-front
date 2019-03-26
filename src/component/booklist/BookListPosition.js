@@ -30,7 +30,7 @@ class BookListPosition extends CommonComponent {
     getDetails(id) {
         axios.get(this.url + id, Constants.headers)
             .then((response) => {
-                this.props.clb(response.data);
+                this.props.onShowDetails(response.data);
             })
             .catch((e) => {this.handleError(e)})
     }

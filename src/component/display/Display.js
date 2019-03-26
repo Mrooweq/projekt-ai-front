@@ -8,26 +8,42 @@ class Display extends Component {
     constructor(){
         super();
         this.state = {
-            id: null
+            showList: true,
+            showDetails: false,
+            details: {},
         };
     }
 
+    onShowDetails = (data) => {
+        this.setState({
+            ...this.state,
+            showList: false,
+            showDetails: true,
+            details: data,
+        });
+    };
+
+    onShowList = () => {
+        this.setState({
+            ...this.state,
+            showList: true,
+            showDetails: false,
+            details: null,
+        });
+    };
+
     render() {
-
-        const showDetails = (response) => {
-            this.setState({response: response});
-        };
-
         const showDisplay = () => {
+            const {showList, showDetails} = this.state;
 
-            if(this.state.response !== undefined){
+            if(showList){
                 return (
-                    <BookPosDetails data={this.state.response}/>
+                    <BookListView onShowDetails={this.onShowDetails}/>
                 );
             }
-            else {
+            else if(showDetails){
                 return (
-                    <BookListView clb={showDetails}/>
+                    <BookPosDetails onShowList={this.onShowList} data={this.state.details}/>
                 );
             }
         };
