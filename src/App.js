@@ -10,7 +10,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 
 class App extends Component {
     render() {
-        const url = 'https://i.ytimg.com/vi/lfgLAJg3srY/maxresdefault.jpg';
+        const url = 'https://images.pexels.com/photos/8633/nature-tree-green-pine.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
 
         return(
             <BackgroundImage
